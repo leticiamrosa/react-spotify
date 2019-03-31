@@ -1,19 +1,46 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
-import { MenuItem, Container } from './HeaderStyles';
+import {
+    Grid,
+    Avatar,
+    AppBar,
+    Toolbar,
+    IconButton,
+    InputBase,
+} from '@material-ui/core';
+import { Container, styles } from './HeaderStyles';
+import { Search } from '@material-ui/icons';
 
 const Header = ({
-    params,
+    userName,
+    userAvatar,
 }) => (
-  <Container container direction="row" justify="space-around" align="center">
-      <Grid item xs={12} sm={12} >
-          <MenuItem>EM DESTAQUE</MenuItem>
-          <MenuItem>PODCASTS</MenuItem>
-          <MenuItem>PARADAS</MenuItem>
-          <MenuItem>GÊNEROS</MenuItem>
-          <MenuItem>LANÇAMENTOS</MenuItem>
-          <MenuItem>DESCOBRIR</MenuItem>
-      </Grid>
+  <Container container justify="space-between">
+        <AppBar style={styles.containerApp} position="static" >
+          <Toolbar style={styles.toolbar}>
+            <div style={styles.search}>
+              <div style={styles.searchIcon}>
+                <Search />
+              </div>
+              <InputBase
+                style={styles.inputInput}
+                placeholder="Buscar"
+              />
+            </div>
+
+            <div />
+            <div style={styles.userContent}>
+              <IconButton
+                // aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+                aria-haspopup="true"
+                // onClick={this.handleProfileMenuOpen}
+                color="inherit"
+              >
+                <Avatar alt={`Imagem de perfil do usuário ${userName}`} src={userAvatar} />
+                <span style={styles.userName}>{userName}</span>
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
 
   </Container>
 );

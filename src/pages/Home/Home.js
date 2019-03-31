@@ -5,7 +5,6 @@ import { Container } from './HomeStyle';
 import { Grid, Button } from '@material-ui/core';
 import SpinnerIf from '../../components/SpinnerIf/SpinnerIf';
 import If from '../../components/If/If';
-import { Link } from 'react-router-dom';
 
 export class Home extends Component {
   constructor(props) {
@@ -49,11 +48,9 @@ export class Home extends Component {
         <If show={logged}>
           <Grid item xs={12} sm={12} align="center">
           <h1>{name}</h1>
-            {/* <Link to="/profile"> */}
               <Button variant="contained" onClick={() => window.location = 'http://localhost:8888/login'}>
                 Sign In With Spotify
               </Button>
-            {/* </Link> */}
           </Grid>
         </If>
       </Container>

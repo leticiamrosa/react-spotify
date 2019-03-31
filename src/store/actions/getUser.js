@@ -3,6 +3,7 @@ import queryString from 'query-string';
 const url = 'https://api.spotify.com/v1/me';
 // const endpointUser = 'me'
 const endpointPlaylist = '/playlists';
+const endpointAlbums = '/albums';
 
 let parsed = queryString.parse(window.location.search);
 let accessToken = parsed.access_token;
@@ -74,9 +75,34 @@ export const getPlaylist = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        dispatch(getUserPlaylistSuccess(data));
+        dispatch(getUserPlaylistSuccess(data.items));
       }).catch((error) => {
         dispatch(getUserPlaylistError(error));
+      })
+  }
+}
+
+// Get Album
+
+export const getUserAlbum = (albums) => {
+  return {
+    type: 'GET_USER_ALBUM_SUCCESS',
+    albums,
+  }
+}
+
+export const getAlbum = () => {
+  return (dispatch) => {
+    fetch(url + endpointAlbums, {
+      headers: { 'Authorization': 'Bearer ' + accessToken }
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        // dispatch(getUserPlaylistSuccess(data.items));
+      }).catch((error) => {
+        console.log(error);
+        // dispatch(getUserPlaylistError(error));
       })
   }
 }

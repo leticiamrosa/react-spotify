@@ -4,6 +4,8 @@ import {
   Title,
   MenuListItemText,
   MenuListItem,
+  MenuItemPlaylist,
+  styles,
 } from './SideMenuStyles';
 import { List, ListItem } from '@material-ui/core';
 import { Home, Search, LibraryMusic } from '@material-ui/icons/';
@@ -14,9 +16,10 @@ const SideMenu = ({
   onClickBiblioteca,
   onClickBuscar,
   onClickInicio,
+  playlists,
 }) => (
       <SideLeft item sm={2}>
-        <Title variant="h4" align="center">React Spotify</Title>
+        <Title variant="h4" align="left">React Spotify</Title>
           <List component="nav">
             <MenuListItem
               button
@@ -44,9 +47,21 @@ const SideMenu = ({
             </MenuListItem>
           </List>
           <List component="nav">
-            <ListItem>
-              <h5 style={{ color: 'white' }}>TOCADO RECENTEMENTE</h5>
+            <ListItem style={{ marginBottom: 0, paddingBottom: 0}}>
+              <p style={styles.menuItem}>SUA BIBLIOTECA</p>
             </ListItem>
+          </List>
+          <List component="nav">
+            <ListItem style={{ marginBottom: 0, paddingBottom: 0}}>
+              <p style={styles.menuItem}>PLAYLISTS</p>
+            </ListItem>
+              {
+                playlists.map(playlist => (
+                  <MenuItemPlaylist key={playlist.name}>
+                    <span>{playlist.name}</span>
+                  </MenuItemPlaylist>
+                ))
+              }
           </List>
       </SideLeft>
 );

@@ -1,9 +1,11 @@
 const fonts = {
   light: 300,
   regular: 400,
-  bold: 700,
+  medium: 700,
 
-  family: `'Lato', sans-serif`,
+  normal: 'Proxima Nova',
+  thin: 'Proxima Thin',
+  bold: 'Proxima Bold',
 }
 
 export default fonts;
